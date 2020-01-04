@@ -7,6 +7,12 @@ pipeline {
                 sh 'mvn package'
             }
         }
+        stage('Publish Build Artifacts') { 
+            steps {
+                echo "Publishing Artifacts..."
+                archiveArtifacts 'project/target/*.war'
+            }
+        }
         stage('Test') { 
             steps {
                 echo "Testing..."
