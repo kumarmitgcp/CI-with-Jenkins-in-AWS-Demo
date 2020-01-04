@@ -4,7 +4,7 @@ pipeline {
         stage('Build') { 
             steps {
                 echo "Building..."
-                bat label: 'Maven Build', script: 'mvn package'
+                sh 'mvn package'
             }
         }
         stage('Test') { 
