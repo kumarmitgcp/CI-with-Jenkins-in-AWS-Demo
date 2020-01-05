@@ -4,10 +4,7 @@ pipeline {
         stage('Build') { 
             steps {
                 echo "Building..."
-                sh '''
-		mvn clean
-		mvn package
-		'''
+                sh 'mvn clean package'		
             }
         }
         stage('Publish Build Artifacts') { 
@@ -19,6 +16,7 @@ pipeline {
         stage('Test') { 
             steps {
                 echo "Testing..."
+		sh 'mvn test'
             }
         }
         stage('Deploy') { 
