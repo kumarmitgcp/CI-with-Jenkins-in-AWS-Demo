@@ -1,9 +1,15 @@
 pipeline {
     agent any 
     stages {
-        stage('Build') { 
+       stage('Build') {
             steps {
                 echo "Building..."
+                sh 'mvn compile'
+            }
+        } 
+       stage('Clean and Package') { 
+            steps {
+                echo "Cleaning and packaging..."
                 sh 'mvn clean package'		
             }
         }
