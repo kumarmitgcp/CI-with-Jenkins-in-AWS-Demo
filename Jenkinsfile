@@ -4,7 +4,10 @@ pipeline {
         stage('Build') { 
             steps {
                 echo "Building..."
-                sh 'mvn package'
+                sh '''
+		mvn clean
+		mvn package
+		'''
             }
         }
         stage('Publish Build Artifacts') { 
