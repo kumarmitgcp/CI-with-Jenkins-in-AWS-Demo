@@ -33,7 +33,7 @@ pipeline {
         stage('Publish Build Artifacts') { 
            
 			steps {
-					nexusArtifactUploader {
+				nexusArtifactUploader {
 					nexusVersion('nexus3')
 					protocol('http')
 					nexusUrl('http://34.65.22.209:8081/')
@@ -41,15 +41,15 @@ pipeline {
 					version('1.2')
 					repository('devopsrepo')
 					user('admin')
-					password('admin123'
-						artifact {
-							artifactId('ci.jenkins.gcp')
-							type('war')
-							classifier('debug')
-							file('proj1-1.2.war')
-						}					
-					}
+					password('admin123')
+					artifact {
+						artifactId('ci.jenkins.gcp')
+						type('war')
+						classifier('debug')
+						file('proj1-1.2.war')
+					}					
 				}
+		    }
         }
 		
 		
