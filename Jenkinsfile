@@ -45,7 +45,7 @@ pipeline {
 						artifactId('ci.jenkins.gcp')
 						type('war')
 						classifier('debug')
-						file('proj1-1.2.war')
+						file('proj112.war')
 					}					
 				}
 		    }
