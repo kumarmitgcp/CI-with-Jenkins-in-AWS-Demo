@@ -12,7 +12,7 @@ pipeline {
 				withSonarQubeEnv('sonarqube') {
 					echo "SonarQube..."
 					//sh "${scannerHome}/bin/sonar-scanner"				
-					sh 'mvn compile'
+					sh 'mvn sonar:sonar'
 				}
 				
 				timeout(time: 5, unit: 'MINUTES') {
