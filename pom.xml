@@ -26,7 +26,7 @@
     <build>
         <pluginManagement>
             <plugins>
-                              <plugin>
+                <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-war-plugin</artifactId>
                     <version>2.4</version>
@@ -39,7 +39,7 @@
             </plugins>
         </pluginManagement>
         <plugins>
-                       <plugin>
+             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
                 <configuration>
@@ -50,4 +50,17 @@
             </plugin>
         </plugins>
     </build>
+	
+	<distributionManagement>
+    <repository>
+      <id>nexus</id>
+      <name>Nexus Releases</name>
+      <url>http://34.65.22.209:8081/repository/devopsrepo/</url>
+    </repository>
+    <snapshotRepository>
+      <id>nexus</id>
+      <name>Nexus Snapshot</name>
+      <url>http://34.65.22.209:8081/repository/devopsrepo-snap/</url>
+    </snapshotRepository>    
+   </distributionManagement>
 </project>
