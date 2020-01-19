@@ -43,9 +43,8 @@ pipeline {
 					credentialsId('nexusadmin')
 					artifact {
 						artifactId('ci.jenkins.gcp')
-						type('war')
-						classifier('debug')
-						file('proj112.war')
+						type('war')						
+						file('proj112.war')						
 					}					
 				}
 		    }
