@@ -6,9 +6,9 @@ pipeline {
             
 			environment {
 				scannerHome = tool 'sonarqube-scanner'
-				sonar.projectKey = "sandeep"
-				sonar.user = "admin"
-				sonar.password = "admin123"
+				sonar.projectKey = 'sandeep'
+				sonar.user = 'admin'
+				sonar.password = 'admin123'
 			}
 			
 			steps {
