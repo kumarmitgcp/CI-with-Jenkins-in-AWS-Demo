@@ -30,25 +30,9 @@ pipeline {
 			}
 		}
 		
-        stage('Publish Build Artifacts') { 
-           
-			steps {
-				nexusArtifactUploader {
-					nexusVersion('nexus3')
-					protocol('http')
-					nexusUrl('http://34.65.22.209:8081/')
-					groupId('ci.jenkins.gcp')
-					version('1.2')
-					repository('devopsrepo')					
-					credentialsId('nexusadmin')
-					artifact {
-						artifactId('ci.jenkins.gcp')
-						type('war')												
-					}					
-				}
-		    }
-        }
-		
+        stage('Publish') {
+			nexusPublisher nexusInstanceId: 'http://34.65.22.209:8081/', nexusRepositoryId: 'devopsrepo', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: 'project/target/project-1.1.war']], mavenCoordinate: [artifactId: 'proj1', groupId: 'ci.jenkins.gcp', packaging: 'war', version: '1.2']]]
+		}
 		
         
         stage('Deploy') { 
