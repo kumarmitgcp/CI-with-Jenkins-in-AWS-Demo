@@ -40,8 +40,8 @@ pipeline {
 			}
 		}
 		
-        stage('Publish') {
-			stage("publish to nexus") {
+        
+		stage("publish to nexus") {
          steps {
              script {
              pom = readMavenPom file: "pom.xml";
@@ -76,8 +76,8 @@ pipeline {
 
              }
          }
-}
-		}
+      }
+		
 		
         
         stage('Deploy') { 
