@@ -31,7 +31,9 @@ pipeline {
 		}
 		
         stage('Publish') {
-			nexusPublisher nexusInstanceId: 'http://34.65.22.209:8081/', nexusRepositoryId: 'devopsrepo', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: 'project/target/project-1.1.war']], mavenCoordinate: [artifactId: 'proj1', groupId: 'ci.jenkins.gcp', packaging: 'war', version: '1.2']]]
+			steps {
+				nexusPublisher nexusInstanceId: 'http://34.65.22.209:8081/', nexusRepositoryId: 'devopsrepo', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: 'project/target/project-1.1.war']], mavenCoordinate: [artifactId: 'proj1', groupId: 'ci.jenkins.gcp', packaging: 'war', version: '1.2']]]
+			}
 		}
 		
         
