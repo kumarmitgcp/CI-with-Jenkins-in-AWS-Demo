@@ -8,13 +8,7 @@ pipeline {
 				withSonarQubeEnv('sonarqube') {
 					echo "SonarQube..."							
 					sh 'mvn sonar:sonar'
-				}
-				
-				/*
-				timeout(time: 10, unit: 'MINUTES') {
-					waitForQualityGate abortPipeline: true
-				}
-				*/
+				}				
             }
        }
        stage('Build') {
@@ -37,11 +31,28 @@ pipeline {
 		}
 		
         stage('Publish Build Artifacts') { 
-            steps {
-                echo "Publishing Artifacts..."
-                archiveArtifacts 'project/target/*.war'
-            }
+           
+			steps {
+					nexusArtifactUploader {
+					nexusVersion('nexus3')
+					protocol('http')
+					nexusUrl('http://34.65.22.209:8081/')
+					groupId('ci.jenkins.gcp')
+					version('1.2')
+					repository('devopsrepo')
+					user('admin')
+					password('admin123'
+						artifact {
+							artifactId('ci.jenkins.gcp')
+							type('war')
+							classifier('debug')
+							file('proj1-1.2.war')
+						}					
+					}
+				}
         }
+		
+		
         
         stage('Deploy') { 
             steps {
