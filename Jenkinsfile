@@ -39,9 +39,8 @@ pipeline {
 					nexusUrl('http://34.65.22.209:8081/')
 					groupId('ci.jenkins.gcp')
 					version('1.2')
-					repository('devopsrepo')
-					user('admin')
-					password('admin123')
+					repository('devopsrepo')					
+					credentialsId('nexusadmin')
 					artifact {
 						artifactId('ci.jenkins.gcp')
 						type('war')
