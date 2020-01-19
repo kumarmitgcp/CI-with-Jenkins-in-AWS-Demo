@@ -4,20 +4,17 @@ pipeline {
 	
 	   stage('CodeQuality-SonarQube') {
             
-			environment {
-				scannerHome = tool 'sonarqube-scanner'				
-			}
-			
 			steps {
 				withSonarQubeEnv('sonarqube') {
-					echo "SonarQube..."
-					//sh "${scannerHome}/bin/sonar-scanner"				
+					echo "SonarQube..."							
 					sh 'mvn sonar:sonar'
 				}
 				
-				timeout(time: 5, unit: 'MINUTES') {
+				/*
+				timeout(time: 10, unit: 'MINUTES') {
 					waitForQualityGate abortPipeline: true
 				}
+				*/
             }
        }
        stage('Build') {
