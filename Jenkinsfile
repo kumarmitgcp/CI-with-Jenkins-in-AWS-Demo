@@ -10,11 +10,9 @@ pipeline {
 			
 			steps {
 				withSonarQubeEnv('sonarqube') {
-					sonar.projectKey = 'sandeep'
-					sonar.user = 'admin'
-					sonar.password = 'admin'
 					echo "SonarQube..."
-					sh "${scannerHome}/bin/sonar-scanner"				
+					//sh "${scannerHome}/bin/sonar-scanner"				
+					sh 'mvn compile'
 				}
 				
 				timeout(time: 5, unit: 'MINUTES') {
