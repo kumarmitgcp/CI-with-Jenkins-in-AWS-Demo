@@ -1,6 +1,24 @@
 pipeline {
     agent any 
     stages {
+	
+	   stage('CodeQuality-SonarQube') {
+            
+			environment {
+				scannerHome = tool 'sonarqube-scanner'
+			}
+			
+			steps {
+				withSonarQubeEnv('sonarqube') {
+					echo "SonarQube..."
+					sh "${scannerHome}/bin/sonar-scanner"				
+				}
+				
+				timeout(time: 5, unit: 'MINUTES') {
+					waitForQualityGate abortPipeline: true
+				}
+            }
+       }
        stage('Build') {
             steps {
                 echo "Building..."
@@ -13,18 +31,20 @@ pipeline {
                 sh 'mvn clean package'		
             }
         }
+		stage('Test') { 
+			steps {
+				echo "Testing..."
+		sh 'mvn test'
+			}
+		}
+		
         stage('Publish Build Artifacts') { 
             steps {
                 echo "Publishing Artifacts..."
                 archiveArtifacts 'project/target/*.war'
             }
         }
-        stage('Test') { 
-            steps {
-                echo "Testing..."
-		sh 'mvn test'
-            }
-        }
+        
         stage('Deploy') { 
             steps {
               echo  "Deploying..."
