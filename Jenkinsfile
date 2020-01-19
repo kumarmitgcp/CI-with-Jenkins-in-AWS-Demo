@@ -5,14 +5,14 @@ pipeline {
 	   stage('CodeQuality-SonarQube') {
             
 			environment {
-				scannerHome = tool 'sonarqube-scanner'
-				sonar.projectKey = 'sandeep'
-				sonar.user = 'admin'
-				sonar.password = 'admin123'
+				scannerHome = tool 'sonarqube-scanner'				
 			}
 			
 			steps {
 				withSonarQubeEnv('sonarqube') {
+					sonar.projectKey = 'sandeep'
+					sonar.user = 'admin'
+					sonar.password = 'admin'
 					echo "SonarQube..."
 					sh "${scannerHome}/bin/sonar-scanner"				
 				}
