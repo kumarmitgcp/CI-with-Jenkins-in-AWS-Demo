@@ -2,10 +2,10 @@ pipeline {
     agent any 	
 	environment {
 		
-		PROJECT_ID = 'PROJECT-ID'
-                CLUSTER_NAME = 'CLUSTER-NAME'
-                LOCATION = 'CLUSTER-LOCATION'
-                CREDENTIALS_ID = 'gke'		
+		PROJECT_ID = 'third-fire-260721'
+                CLUSTER_NAME = 'k8s-cluster1'
+                LOCATION = 'europe-north1-a'
+                CREDENTIALS_ID = 'kubernetes'		
 	}
 	
     stages {	
@@ -48,7 +48,7 @@ pipeline {
                 steps{
                    echo "Deployment started ..."
 		   sh "sed -i 's/devops:latest/devops:${env.BUILD_ID}/g' deployment.yaml"
-                   //step([$class: 'KubernetesEngineBuilder', projectId: env.PROJECT_ID, clusterName: env.CLUSTER_NAME, location: env.LOCATION, manifestPattern: 'deployment.yaml', credentialsId: env.CREDENTIALS_ID, verifyDeployments: true])
+                   step([$class: 'KubernetesEngineBuilder', projectId: env.PROJECT_ID, clusterName: env.CLUSTER_NAME, location: env.LOCATION, manifestPattern: 'deployment.yaml', credentialsId: env.CREDENTIALS_ID, verifyDeployments: true])
 		   echo "Deployment Finished ..."
             }
           }
