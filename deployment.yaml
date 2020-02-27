@@ -12,9 +12,11 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
- name: myapp
+  name: my-service
 spec:
- ports:
- - port: 8084
-   targetPort: 8084
-type: LoadBalancer
+  selector:
+    app: myapp
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8084
