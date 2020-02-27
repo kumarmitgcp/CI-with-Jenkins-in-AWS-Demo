@@ -44,10 +44,13 @@ pipeline {
                 }
             }
 	   
-           stage('Deploy') { 
-                steps {
-                   echo  "Deploying..."
-               }
+           stage('Deploy to K8s') { 
+                steps{
+                   echo "Deployment started ..."
+		   //sh "sed -i 's/hello:latest/hello:${env.BUILD_ID}/g' deployment.yaml"
+                   //step([$class: 'KubernetesEngineBuilder', projectId: env.PROJECT_ID, clusterName: env.CLUSTER_NAME, location: env.LOCATION, manifestPattern: 'deployment.yaml', credentialsId: env.CREDENTIALS_ID, verifyDeployments: true])
+		   echo "Deployment Finished ..."
+            }
           }
     }
 }
