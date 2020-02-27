@@ -26,7 +26,15 @@ pipeline {
 	          echo "Testing..."
 		  sh 'mvn test'
 		}
-	   }     
+	   }
+	   stage('Build Docker Image') { 
+		steps {
+                   script {
+                      myapp = docker.build("kumarmitdocker/devops:${env.BUILD_ID}")
+                   }
+                }
+	   }
+	   
            stage('Deploy') { 
                 steps {
                    echo  "Deploying..."
