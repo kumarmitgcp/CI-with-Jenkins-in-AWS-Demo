@@ -1,38 +1,12 @@
-apiVersion: devops/v1
-kind: Deployment
-metadata:
-name: devops
-labels:
-  app: devops
-spec:
-strategy:
-  type: Recreate
-template:
-  metadata:
-    labels:
-      app: devops
-      tier: devops
-  spec:
-    containers:
-    - name: devops
-      image: kumarmitdocker/devops:latest
-      imagePullPolicy: Always
-      ports:
-      - containerPort: 8083
-        name: devops
-
----
 apiVersion: v1
-kind: Service
-metadata:
-name: devops
-labels:
-  app: devops
+kind: Pod
+metadata: 
+  name: myapp
+  labels:
+    app: myapp
 spec:
-ports:
-  - port: 8083
-    targetPort: 8083
-selector:
-  app: devops
-  tier: devops
-type: LoadBalancer
+  containters:
+    - name: myapp
+      image: kumarmitdocker/devops:8
+      ports:
+        - containerPort: 8080
