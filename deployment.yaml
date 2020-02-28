@@ -6,7 +6,7 @@ metadata:
 spec:
  containers:
    - name: myapp
-     image: kumarmitdocker/devops:8
+     image: kumarmitdocker/devops:tagversion
 
 ---
 apiVersion: v1
