@@ -17,7 +17,7 @@ spec:
   spec:
    containers:
    - name: myapp
-     image: kumarmitdocker/devops:tagversion
+     image: gcr.io/third-fire-260721/kumarmitdocker/devops:tagversion
      ports:
      - containerPort: 8080
 
