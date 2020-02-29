@@ -19,7 +19,7 @@ spec:
    - name: myapp
      image: kumarmitdocker/devops:tagversion
      ports:
-     - containerPort: 8083
+     - containerPort: 80
 
 ---
 apiVersion: v1
