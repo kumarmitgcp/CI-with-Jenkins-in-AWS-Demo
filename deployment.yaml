@@ -27,10 +27,10 @@ kind: Service
 metadata:
   name: my-service
 spec:
-  type: LoadBalancer
+  type: ClusterIP
   selector:
     app: myapp
   ports:
     - protocol: TCP
-      port: 60000
-      targetPort: 50001
+      port: 80
+      targetPort: 8084
