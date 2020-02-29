@@ -45,7 +45,7 @@ pipeline {
                             myimage.push("${env.BUILD_ID}")		
                      }
 		     */
-			   docker.withRegistry('https://gcr.io', 'gcrcredential') {
+			   docker.withRegistry('https://gcr.io', 'gcr:gcrcredential') {
                             myimage.push("${env.BUILD_ID}")		
                      }
 			   
