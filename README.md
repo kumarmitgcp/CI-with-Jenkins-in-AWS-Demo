@@ -6,3 +6,5 @@ The repo does following tasks:
 3. Push the image to docker hub.
 4. deploy the image using deployment.yaml file to kubernetes cluster.
 5. expose the kubernetes service using deployment.yaml.
+6. To do..
+
